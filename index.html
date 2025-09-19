@@ -585,7 +585,7 @@
     }
   });
 
-   ocument.addEventListener('touchstart', ()=>{ try { SND.init(); } catch {} }, { once:true, passive:true });
+  document.addEventListener('touchstart', ()=>{ try { SND.init(); } catch {} }, { once:true, passive:true });
   document.addEventListener('pointerdown', ()=>{ try { SND.init(); } catch {} }, { once:true });
 
   // Mobile typing (virtual keyboard) → play notes
@@ -639,4 +639,5 @@
 </script>
 </body>
 </html>
+
 
