@@ -585,8 +585,58 @@
     }
   });
 
+   ocument.addEventListener('touchstart', ()=>{ try { SND.init(); } catch {} }, { once:true, passive:true });
+  document.addEventListener('pointerdown', ()=>{ try { SND.init(); } catch {} }, { once:true });
+
+  // Mobile typing (virtual keyboard) → play notes
+(function mobileTyping(){
+  const prevVals = new WeakMap();
+
+  function isTextTarget(el){
+    if (!el) return false;
+    const t = (el.tagName || '').toUpperCase();
+    const type = (el.type || '').toLowerCase();
+    return (
+      t === 'TEXTAREA' ||
+      (t === 'INPUT' && (!type || ['text','search','email','url','password','tel'].includes(type))) ||
+      el.isContentEditable === true
+    );
+  }
+
+  // θυμόμαστε την προηγούμενη τιμή για diff
+  document.addEventListener('focusin', (e)=>{
+    const el = e.target;
+    if (isTextTarget(el)) prevVals.set(el, el.value ?? el.textContent ?? '');
+  });
+
+  // στα mobile το beforeinput έχει e.data με τον χαρακτήρα
+  document.addEventListener('beforeinput', (e)=>{
+    const el = e.target;
+    if (!isTextTarget(el)) return;
+    if (e.inputType === 'insertText' && e.data) {
+      try { SND.captureChar(e.data); } catch {}
+    }
+  });
+
+  // fallback: diff στην τιμή και στείλε ό,τι προστέθηκε
+  document.addEventListener('input', (e)=>{
+    const el = e.target;
+    if (!isTextTarget(el)) return;
+    const prev = prevVals.get(el) ?? '';
+    const cur  = (el.value ?? el.textContent ?? '');
+    if (cur.length > prev.length) {
+      const added = cur.slice(prev.length);
+      for (const ch of added) { try { SND.captureChar(ch); } catch {} }
+    }
+    prevVals.set(el, cur);
+  });
+})();
+
+
+
   start();
 })();
 </script>
 </body>
 </html>
+
