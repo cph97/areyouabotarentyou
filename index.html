@@ -2,7 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="An endless CAPTCHA verification system - Interactive Net Art" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Endless CAPTCHA — Net Art</title>
   <style>
   :root{
@@ -354,15 +360,293 @@
     background:#ffffff;
     color:#000000;
   }
+
+  /* ========== RESPONSIVE DESIGN ========== */
+  
+  /* Mobile phones (portrait) - up to 480px */
+  @media (max-width: 480px) {
+    body { font-size: 11px; }
+    
+    #hud {
+      left: 4px;
+      bottom: 4px;
+      padding: 3px 4px;
+      font-size: 10px;
+      max-width: calc(100vw - 8px);
+    }
+    
+    .ctrl {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      padding: 3px 4px;
+    }
+    
+    .ctrl label { min-width: auto; font-size: 10px; }
+    .ctrl input[type=range] { width: 100%; max-width: 200px; }
+    
+    .win {
+      max-width: calc(100vw - 16px) !important;
+      max-height: calc(100vh - 16px) !important;
+    }
+    
+    .classicPanel {
+      width: 100%;
+      max-width: 320px;
+    }
+    
+    .classicGrid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    
+    .classicCell {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+    
+    .classicGrid.cols4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .classicGrid.cols4 .classicCell {
+      width: 100%;
+      height: auto;
+    }
+    
+    .bar { padding: 2px 4px; gap: 4px; }
+    .title { font-size: 10px; }
+    .x { padding: 0 4px; font-size: 10px; }
+    
+    .content { padding: 6px; }
+    
+    .classicHeader { padding: 3px 4px; font-size: 10px; }
+    .classicHeader small { font-size: 9px; }
+    
+    .classicBody { padding: 6px; }
+    .classicFoot { padding: 3px 4px; }
+    
+    .btn, .classicBtn {
+      padding: 4px 8px;
+      font-size: 10px;
+      touch-action: manipulation;
+    }
+    
+    input[type=text] {
+      font-size: 14px;
+      padding: 6px 8px;
+      touch-action: manipulation;
+    }
+    
+    input[type=range] {
+      height: 6px;
+      touch-action: manipulation;
+    }
+    
+    .captcha-word { font-size: 16px; }
+    
+    .toast {
+      right: 4px;
+      top: 4px;
+      font-size: 9px;
+      max-width: calc(100vw - 8px);
+    }
+  }
+  
+  /* Mobile phones (landscape) & small tablets - 481px to 768px */
+  @media (min-width: 481px) and (max-width: 768px) {
+    #hud {
+      left: 6px;
+      bottom: 6px;
+      font-size: 11px;
+    }
+    
+    .classicPanel {
+      width: 100%;
+      max-width: 400px;
+    }
+    
+    .classicGrid {
+      grid-template-columns: repeat(3, minmax(80px, 110px));
+      gap: 4px;
+    }
+    
+    .classicCell {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+    
+    .classicGrid.cols4 {
+      grid-template-columns: repeat(4, minmax(70px, 90px));
+    }
+    
+    .win {
+      max-width: calc(100vw - 32px);
+      max-height: calc(100vh - 32px);
+    }
+    
+    .btn, .classicBtn {
+      touch-action: manipulation;
+    }
+    
+    input[type=text] {
+      font-size: 12px;
+      padding: 4px 6px;
+      touch-action: manipulation;
+    }
+  }
+  
+  /* Tablets (portrait) - 769px to 1024px */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .classicPanel {
+      width: 420px;
+    }
+    
+    .classicGrid {
+      grid-template-columns: repeat(3, 120px);
+    }
+    
+    .classicCell {
+      width: 120px;
+      height: 120px;
+    }
+    
+    .classicGrid.cols4 {
+      grid-template-columns: repeat(4, 95px);
+    }
+    
+    .classicGrid.cols4 .classicCell {
+      width: 95px;
+      height: 95px;
+    }
+  }
+  
+  /* Laptops & desktops - 1025px to 1920px */
+  @media (min-width: 1025px) and (max-width: 1920px) {
+    .classicPanel {
+      width: 360px;
+    }
+  }
+  
+  /* Ultrawide monitors - 1921px and above */
+  @media (min-width: 1921px) {
+    body { font-size: 14px; }
+    
+    .classicPanel {
+      width: 480px;
+    }
+    
+    .classicGrid {
+      grid-template-columns: repeat(3, 140px);
+    }
+    
+    .classicCell {
+      width: 140px;
+      height: 140px;
+    }
+    
+    .classicGrid.cols4 {
+      grid-template-columns: repeat(4, 110px);
+    }
+    
+    .classicGrid.cols4 .classicCell {
+      width: 110px;
+      height: 110px;
+    }
+    
+    .bar { padding: 4px 8px; }
+    .title { font-size: 13px; }
+    .x { font-size: 13px; }
+    
+    .content { padding: 12px; }
+    
+    .classicHeader { font-size: 13px; }
+    .classicHeader small { font-size: 11px; }
+    
+    .classicBody { padding: 10px; }
+    
+    .btn, .classicBtn {
+      padding: 4px 14px;
+      font-size: 13px;
+    }
+    
+    input[type=text] {
+      font-size: 13px;
+      padding: 3px 6px;
+    }
+    
+    .captcha-word { font-size: 24px; }
+    
+    #hud {
+      font-size: 13px;
+      padding: 6px 8px;
+    }
+    
+    .ctrl label { font-size: 13px; }
+    .ctrl input[type=range] { width: 200px; }
+  }
+  
+  /* Touch device optimizations */
+  @media (hover: none) and (pointer: coarse) {
+    .btn, .classicBtn, .x, .classicCell {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    
+    input[type=range] {
+      height: 8px;
+    }
+    
+    input[type=range]::-webkit-slider-thumb {
+      width: 20px;
+      height: 28px;
+    }
+    
+    input[type=range]::-moz-range-thumb {
+      width: 20px;
+      height: 28px;
+    }
+  }
+  
+  /* Landscape orientation adjustments */
+  @media (max-height: 500px) and (orientation: landscape) {
+    #hud {
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 50vw;
+    }
+    
+    .win {
+      max-height: calc(100vh - 16px);
+    }
+    
+    .classicPanel {
+      max-height: calc(100vh - 80px);
+      overflow-y: auto;
+    }
+  }
+  
+  /* High DPI displays */
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .win {
+      border-width: 1px;
+    }
+    
+    .btn, .classicBtn {
+      border-width: 1px;
+    }
+  }
   </style>
 </head>
 <body>
- <!-- background video (πηγή για το WebGL) -->
+ <!-- background video ( WebGL) -->
 <video id="bgVideo" autoplay muted loop playsinline style="display:none">
   <source src="sky.mp4" type="video/mp4" />
 </video>
 
-<!-- καινούριο canvas που θα βλέπει ο θεατής -->
+<!-- new canvas for viewer -->
 <canvas id="bgCanvas"></canvas>
   <!-- SVG για bulge / refraction -->
   <svg width="0" height="0" style="position:absolute">
@@ -384,7 +668,7 @@
 
 
   <script>
-    // ξεκινάει το video μετά το πρώτο interaction (mobile κλπ)
+    // video starts after first interaction (mobile etc)
     const v = document.getElementById('bgVideo');
     if (v) {
       const tryPlay = () => { v.play().catch(()=>{}); };
@@ -561,7 +845,7 @@
             }
         `;
 
-        // υποστήριξη ΠΟΛΛΩΝ bulges ταυτόχρονα (μέχρι 16)
+        // υmany bubbles same time
         const fsSrc = `
             precision mediump float;
             varying vec2 vUV;
@@ -653,22 +937,22 @@
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
         gl.uniform1i(uTexLoc, 0);
 
-        // ===== ΠΟΛΛΕΣ ΦΟΥΣΚΕΣ ΜΑΖΙ =====
+        // =====bubbles together =====
         const MAX_PULSES = 16;
         const pulses = [];
 
         const centersArr   = new Float32Array(2 * MAX_PULSES);
         const strengthsArr = new Float32Array(MAX_PULSES);
 
-        // GLOBAL για να το καλείς από SND / key presses
+        // GLOBAL call SND / key presses
         window.bgPulse = function(intensity){
             intensity = intensity || 0.7;
 
             if (pulses.length >= MAX_PULSES) pulses.shift();
 
             pulses.push({
-            cx: 0.1 + Math.random()*0.8,   // 10–90% πλάτος
-            cy: 0.1 + Math.random()*0.8,   // 10–90% ύψος
+            cx: 0.1 + Math.random()*0.8,   // 10–90% width
+            cy: 0.1 + Math.random()*0.8,   // 10–90% height
             strength: intensity
             });
         };
@@ -682,7 +966,7 @@
             const dt  = (now - lastTime) / 1000.0; // seconds
             lastTime  = now;
 
-            // ανανέωση texture από το video
+            // update texture video
             if (video.readyState >= 2){
             gl.bindTexture(gl.TEXTURE_2D, tex);
             gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA,
@@ -690,8 +974,8 @@
             }
 
             // ===== smooth decay ~0.5s =====
-            const tau = 0.5;                    // περίπου μισό δευτερόλεπτο
-            const decay = Math.exp(-dt / tau);  // εκθετική απόσβεση
+            const tau = 0.5;                    
+            const decay = Math.exp(-dt / tau);  
 
             for (let i = pulses.length - 1; i >= 0; i--){
             const p = pulses[i];
@@ -724,13 +1008,13 @@
             gl.uniform2fv(uCentersLoc, centersArr);
             gl.uniform1fv(uStrengthsLoc, strengthsArr);
 
-            // πιο μικρή “κυκλική” περιοχή (π.χ. ~20% του πλάτους)
+            //circle areas 
             gl.uniform1f(uRadiusLoc, 0.22);
 
             gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
         }
 
-        // βεβαιώσου ότι το video ξεκινά μετά από interaction
+        //  video after interaction
         const tryPlay = () => { video.play().catch(()=>{}); };
         document.addEventListener('click',   tryPlay, { once:true });
         document.addEventListener('keydown', tryPlay, { once:true });
@@ -762,7 +1046,7 @@
       spaceVoice=null;
     }
 
-    // keyboard→note mapping (γράμματα + αριθμοί)
+    // keyboard→note mapping 
     const layout = 'ZXCVBNMASDFGHJKLQWERTYUIOP';
     const scale = [0,2,4,5,7,9,11];
 
@@ -787,7 +1071,7 @@
       return freq;
     }
 
-    // ΚΑΘΑΡΕΣ νότες, χωρίς random looper
+    // notes
     function captureChar(ch){
       const f = keyToFreq(ch);
       if(!f) return;
@@ -826,10 +1110,10 @@
       return Math.max(CFG.looper.minMs, Math.min(CFG.looper.maxMs, avg*0.9));
     }
     function startLooper(){
-      // πλέον δεν χρησιμοποιείται, αλλά το κρατάμε αν θες να το ξανανοίξεις στο μέλλον.
+      
     }
 
-    // ήχοι κουμπιών
+    // sound buttons
     function btnClose() {
       ensure();
       beep(380, 0.04, 'square', 0.12);
@@ -1029,8 +1313,17 @@
 
     const w = document.createElement('div'); w.className = 'win';
     w.style.width = 'auto';
-    w.style.left = Math.max(8, randint(8, Math.max(9, window.innerWidth-380)))+'px';
-    w.style.top  = Math.max(8, randint(8, Math.max(9, window.innerHeight-260)))+'px';
+    
+    // Responsive positioning based on viewport size
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const isMobile = vw <= 768;
+    const margin = isMobile ? 8 : 16;
+    const maxWidth = isMobile ? Math.min(vw - margin * 2, 360) : 380;
+    const maxHeight = isMobile ? vh - margin * 2 : 260;
+    
+    w.style.left = Math.max(margin, randint(margin, Math.max(margin + 1, vw - maxWidth - margin)))+'px';
+    w.style.top  = Math.max(margin, randint(margin, Math.max(margin + 1, vh - maxHeight - margin)))+'px';
     w.style.zIndex = String(++S.z);
 
     const bar = document.createElement('div'); bar.className='bar';
@@ -1351,8 +1644,11 @@
       let word = pool[randint(0,pool.length)];
 
       const can = document.createElement('canvas');
-      can.width  = 260;
-      can.height = 80;
+      const isMobile = window.innerWidth <= 480;
+      can.width  = isMobile ? 240 : 260;
+      can.height = isMobile ? 70 : 80;
+      can.style.maxWidth = '100%';
+      can.style.height = 'auto';
       T.content.append(can);
       const ctx = can.getContext('2d');
 
